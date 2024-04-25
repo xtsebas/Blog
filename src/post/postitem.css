@@ -1,0 +1,18 @@
+.post-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.post-item h2 {
+    margin-bottom: 5px;
+}
+
+.post-item p {
+    margin-bottom: 5px;
+}

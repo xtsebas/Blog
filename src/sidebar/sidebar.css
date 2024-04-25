@@ -1,0 +1,16 @@
+.sidebar {
+    background-color: #f2f2f2;
+    padding: 1.5rem 2.5rem;
+    border: 1px solid #c4ccc4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.sidebar.active {
+    background-color: #e6e6e6;
+}
