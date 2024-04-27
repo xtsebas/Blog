@@ -1,7 +1,8 @@
 import React from 'react';
-import PostItem from './Postitem';
+import { Link } from 'react-router-dom';
 import LoadingScreen from '../loading/loadingScreen';
 import { useApi } from '../useApi/useApi';
+import PostItem from './Postitem';
 import './Post.css';
 
 const Posts = () => {
@@ -26,7 +27,14 @@ const Posts = () => {
     return (
         <section className="posts">
             {posts.map((post) => (
-                <PostItem key={post.id} post={post} />
+                // Utilizar Link para navegar a la ruta /postdetail con el ID del post seleccionado como parámetro
+                <Link key={post.id} to={`/postdetail?id=${post.id}`} className="post-link">
+                    <section className="posts">
+                        {posts.map((post) => (
+                            <PostItem key={post.id} post={post} />
+                        ))}
+                    </section>
+                </Link>
             ))}
         </section>
     );

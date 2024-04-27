@@ -8,13 +8,13 @@ const Sidebar = () => {
         <aside className={'sidebar ${isHover ? "active" : ""}'}>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/user">User</Link>
+                    <Link to="/posts">Home</Link>
                 </li>
                 <li>
                     <Link to="/post">Post</Link>
+                </li>
+                <li>
+                    <Link to="/user">User</Link>
                 </li>
             </ul>
         </aside>

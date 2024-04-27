@@ -53,3 +53,32 @@ export const updatePostById = async (id, title, sinopsis, gender) => {
     }
     return response.json();
 };
+
+export const login = async (usuario, password) => {
+    const response = await fetch(`${API_URL}/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ usuario, password })
+    });
+    if (!response.ok) {
+        throw new Error('Error al iniciar sesion');
+    }
+    return response.json();
+};
+
+export const register = async (usuario, password) => {
+    const response = await fetch(`${API_URL}/registro`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ usuario, password })
+    });
+    if (!response.ok) {
+        throw new Error('Error al crear el post en el API');
+    }
+    return response.json();
+};
+

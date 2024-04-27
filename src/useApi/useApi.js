@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import mysql from 'mysql';
+import bcrypt from 'bcryptjs';
 import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById } from './api';
 
 export const useApi = () => {
@@ -71,6 +73,6 @@ export const useApi = () => {
         }
     };
 
-    return { data, loading, error, fetchPost, addPost, removePost, updatePost };
+    return { data, loading, error, fetchPost, addPost, removePost, updatePost, login, regi };
 };
 

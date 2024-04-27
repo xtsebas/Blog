@@ -1,0 +1,38 @@
+.user-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.user-container button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
