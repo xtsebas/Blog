@@ -1,22 +1,32 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import useNavigate from "../HOC/useNavigate";
+import { TokenProvider } from "../login/useToken";
 import './sidebar.css';
 
 const Sidebar = () => {
     const [isHover, setIsHover] = useState(false);
+    const { page, navigate } = useNavigate()
+    const { isLoggedIn } = TokenProvider;
+    console.log(isLoggedIn);
     return (
         <aside className={'sidebar ${isHover ? "active" : ""}'}>
-            <ul>
-                <li>
-                    <Link to="/posts">Home</Link>
-                </li>
-                <li>
-                    <Link to="/post">Post</Link>
-                </li>
-                <li>
-                    <Link to="/user">User</Link>
-                </li>
-            </ul>
+        {
+            isLoggedIn ? (
+                <ul>
+                    <li  className={page === '/' ? 'active' : ''}>
+                        <a href="/#" onClick={() => navigate('/')}>Home</a>
+                    </li>
+                    <li>
+                        <a href="/#/post" onClick={() => navigate('/post')}>Upload</a>
+                    </li>
+                    <li>
+                        <a href="/#/user" onClick={() => navigate('/user')}>User</a>
+                    </li>
+                </ul>
+            ) : (
+                <h1>INGRESA SESION</h1>
+            )
+        }
         </aside>
     )
 }

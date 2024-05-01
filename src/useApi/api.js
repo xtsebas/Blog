@@ -55,6 +55,7 @@ export const updatePostById = async (id, title, sinopsis, gender) => {
 };
 
 export const login = async (usuario, password) => {
+    //debugger;
     const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
@@ -62,10 +63,11 @@ export const login = async (usuario, password) => {
         },
         body: JSON.stringify({ usuario, password })
     });
+
     if (!response.ok) {
-        throw new Error('Error al iniciar sesion');
+        throw new Error('Error al iniciar sesión');
     }
-    return response.json();
+    return response;
 };
 
 export const register = async (usuario, password) => {

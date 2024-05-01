@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import mysql from 'mysql';
 import bcrypt from 'bcryptjs';
-import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById } from './api';
+import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById, login, register } from './api';
 
 export const useApi = () => {
     const [data, setData] = useState([]);
@@ -73,6 +73,19 @@ export const useApi = () => {
         }
     };
 
-    return { data, loading, error, fetchPost, addPost, removePost, updatePost, login, regi };
+    const userLogin = async (usuario, password) => {
+        //debugger;
+        setLoading(true);
+        try {
+            const response = await login(usuario, password);
+            return response;
+        } catch (error) {
+            setError('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { data, loading, error, fetchPost, addPost, removePost, updatePost, userLogin };
 };
 

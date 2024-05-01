@@ -1,26 +1,60 @@
-import React from 'react';
-import { Switch, Route, Routes } from 'react-router-dom';
-import Router from './withRouter';
-import Posts from '../post/Post';
-import User from '../user/User';
-import Settings from './Settings';
-import MyFormComponent from '../Form/Form';
-import Login from '../login/Login';
-import Postdetail from '../post/Postdetail';
+import PropTypes from 'prop-types'
+import './admin.css'
 
-const Admin = () => {
+import useToken from '../login/useToken'
+import useNavigate from '../HOC/useNavigate'
+import Sidebar from '../sidebar/Sidebar'
+
+import Posts from '../post/Post'
+import MyFormComponent from '../Form/Form'
+import Postdetail from '../post/Postdetail'
+import User from '../user/User'
+import Login from '../login/Login'
+
+
+const routes = {
+    '/': {
+        component: Posts,
+        requiresAuth: true
+    }, 
+    '/post': {
+        component: MyFormComponent,
+        requiresAuth: true
+    },   
+    '/user': {
+        component: User,
+        requiresAuth: true
+    },
+    '/login': {
+        component: Login,
+        requiresAuth: false
+    },
+}
+
+const Pages = () => {
+    const { token } = useToken() 
+    const { page, navigate } = useNavigate()
+
+    let CurrentPage = () => <h1>404</h1>
+    
+    if (routes[page] && routes[page].requiresAuth && !token) {
+        return <div><h1>Unauthorized</h1><a href='/?#/login' onClick={() => navigate('/login')}>Please login</a></div>
+    }
+
+    CurrentPage = routes[page].component
+
     return (
-        <div>
-            <h1>Panel de Administración</h1>
-            <Routes>
-                <Route exact path="/" component={Router(Login)} />
-                <Route exact path="/posts" component={Router(Posts)} />
-                <Route path="/users" component={Router(User)} />
-                <Route path='/post' Component={Route(MyFormComponent)}></Route>
-                <Route path='/postid' Component={Route(Postdetail)}></Route>
-            </Routes>
+        <div className='container'>
+            <Sidebar />
+            <CurrentPage />
         </div>
-    );
-};
+    )
+}
 
-export default Admin;
+
+Pages.propTypes = {
+    token: PropTypes.string,
+    setToken: PropTypes.func
+}
+
+export default Pages

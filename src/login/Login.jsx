@@ -3,67 +3,64 @@ import { useApi } from "../useApi/useApi";
 import { useState } from "react";
 import LoadingScreen from "../loading/loadingScreen";
 import './login.css';
-const loadingscreen = React.lazy(() => LoadingScreen);
-
-
+import useToken from "./useToken";
+import useNavigate from "../HOC/useNavigate";
 
 const Login = () => {
-    const { login, loading, error } = useApi();
+    const { userLogin, loading, error } = useApi();
     const [usuario, setUsuario] = useState('');
     const [password, setPassword] = useState('');
+    const { navigate } = useNavigate();
+    const { setToken } = useToken(); 
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('')
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true); // Establece el estado de isSubmitting a true cuando se envía el formulario
+    const handleSubmit = async () => {
         try {
-            const result = await login(usuario, password);
-            alert(result); // Mostrar el resultado en un alert
-            // Restablecer los campos de usuario y contraseña después de enviar el formulario
-            setUsuario('');
-            setPassword('');
+            //debugger;
+            const response = await userLogin(usuario, password);
+            console.log(response);
+    
+            if (response.ok) {
+                const { access_token } = await response.json();
+                console.log('success! token is: ', access_token);
+                setToken(access_token);
+                navigate('/');
+                window.location.href = '/'; 
+                return;
+            } 
         } catch (error) {
-            alert(error.message); // Mostrar el mensaje de error en un alert
-        } finally {
-            setIsSubmitting(false); // Establece el estado de isSubmitting a false cuando la solicitud haya terminado
+            console.error('Error:', error);
+            setErrorMessage('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
         }
     };
+    
+    
 
     return (
         <div className="user-container">
             <h1>Iniciar sesión</h1>
-            <form id="login-form" onSubmit={handleLogin}>
-                {/* Campos de entrada para el usuario y la contraseña */}
-                <input 
-                    type="text" 
-                    id="usuario-login" 
-                    placeholder="Usuario" 
-                    required 
-                    value={usuario}
-                    onChange={(e) => setUsuario(e.target.value)}
-                />
-                <input 
-                    type="password" 
-                    id="password-login" 
-                    placeholder="Contraseña" 
-                    required 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                {/* Botón para iniciar sesión */}
+            {
+                errorMessage !== '' ? (
+                <div onClick={() => setErrorMessage('')}>
+                    {errorMessage}
+                </div>
+                ) : null
+            }
+            <form id="login-form" onSubmit={handleSubmit}>
+                
+                <input type="text" id="usuario-login" placeholder="Usuario" value={usuario} required onChange={(value) => setUsuario(value.target.value)}/>
+
+                <input type="password" id="password-login" placeholder="Contraseña" value={password} required onChange={(value) => setPassword(value.target.value)}/>
+
                 <button type="submit" disabled={loading || isSubmitting}>Iniciar sesión</button>
-                {/* Componente de pantalla de carga */}
-                {isSubmitting && (
-                    <React.Suspense fallback={<div>Loading...</div>}>
-                        <LoadingScreen />
-                    </React.Suspense>
-                )}
-                {/* Mensajes de carga y error */}
-                {loading && !isSubmitting && <div>Loading...</div>}
-                {error && <span className="error">{error}</span>}
+
             </form>
         </div>
     );
 };
+
+Login.propTypes = {
+}
 
 export default Login;
