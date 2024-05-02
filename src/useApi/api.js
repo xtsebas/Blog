@@ -9,6 +9,7 @@ export const fetchPosts = async () => {
 };
 
 export const fetchPostById = async (id) => {
+    debugger;
     const response = await fetch(`${API_URL}/posts/${id}`);
     if (!response.ok) {
         throw new Error('Error al obtener el post del API');
@@ -46,7 +47,7 @@ export const updatePostById = async (id, title, sinopsis, gender) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ title, sinopsis, gender })
+        body: JSON.stringify({ id, title, sinopsis, gender })
     });
     if (!response.ok) {
         throw new Error('Error al actualizar el post en el API');
@@ -81,6 +82,6 @@ export const register = async (usuario, password) => {
     if (!response.ok) {
         throw new Error('Error al crear el post en el API');
     }
-    return response.json();
+    return response;
 };
 

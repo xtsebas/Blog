@@ -2,10 +2,17 @@ import React from 'react';
 import LoadingScreen from '../loading/loadingScreen';
 import { useApi } from '../useApi/useApi';
 import PostItem from './Postitem';
+import useNavigate from '../HOC/useNavigate';
 import './Post.css';
 
 const Posts = () => {
     const { data: posts, loading, error } = useApi();
+    const { navigate } = useNavigate();
+
+    const handleClick = (postId) => {
+        localStorage.setItem('postId', postId);
+        navigate( '/post/:id');
+    };
 
     if (error) {
         return (
@@ -26,7 +33,9 @@ const Posts = () => {
     return (
         <section className="posts">
             {posts.map((post) => (
-                <PostItem key={post.id} post={post} />
+                <div key={post.id} onClick={() => handleClick(post.id)}>
+                    <PostItem post={post} />
+                </div>
             ))}
         </section>
     );

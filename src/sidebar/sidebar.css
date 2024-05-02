@@ -9,8 +9,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    a {
+        color: black;
+    }
 }
 
 .sidebar.active {
     background-color: #e6e6e6;
+}
+
+a {
+    color: black;
 }

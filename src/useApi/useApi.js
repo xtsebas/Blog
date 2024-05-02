@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import mysql from 'mysql';
-import bcrypt from 'bcryptjs';
 import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById, login, register } from './api';
 
 export const useApi = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+        // Al iniciar el componente, intenta recuperar isLoggedIn del localStorage
+        const storedLoggedIn = localStorage.getItem('isLoggedIn');
+        // Si isLoggedIn está almacenado en localStorage, convierte el valor a booleano y devuélvelo
+        return storedLoggedIn ? JSON.parse(storedLoggedIn) : false;
+    });
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -27,6 +31,7 @@ export const useApi = () => {
     const fetchPost = async (postId) => {
         setLoading(true);
         try {
+            debugger;
             const responseData = await fetchPostById(postId);
             return responseData;
         } catch (error) {
@@ -74,10 +79,12 @@ export const useApi = () => {
     };
 
     const userLogin = async (usuario, password) => {
-        //debugger;
+        debugger;
         setLoading(true);
         try {
             const response = await login(usuario, password);
+            setIsLoggedIn(true);
+            localStorage.setItem('isLoggedIn', JSON.stringify(true));
             return response;
         } catch (error) {
             setError('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
@@ -86,6 +93,20 @@ export const useApi = () => {
         }
     };
 
-    return { data, loading, error, fetchPost, addPost, removePost, updatePost, userLogin };
+    const addUser = async (usuario, password) => {
+        setLoading(true);
+        try {
+            const response = await register(usuario, password);
+            setIsLoggedIn(true);
+            localStorage.setItem('isLoggedIn', JSON.stringify(true));
+            return response;
+        } catch (error) {
+            setError('Error al crear el usuario.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { data, loading, error, fetchPost, addPost, removePost, updatePost, userLogin, addUser, isLoggedIn, setIsLoggedIn };
 };
 

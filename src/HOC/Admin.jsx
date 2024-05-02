@@ -10,6 +10,7 @@ import MyFormComponent from '../Form/Form'
 import Postdetail from '../post/Postdetail'
 import User from '../user/User'
 import Login from '../login/Login'
+import Register from '../login/Register'
 
 
 const routes = {
@@ -29,6 +30,15 @@ const routes = {
         component: Login,
         requiresAuth: false
     },
+    '/register': {
+        component: Register,
+        requiresAuth: false
+    },
+    '/post/:id': {
+        component: Postdetail,
+        requiresAuth: true
+    },
+
 }
 
 const Pages = () => {
@@ -42,6 +52,7 @@ const Pages = () => {
     }
 
     CurrentPage = routes[page].component
+    console.log(page);
 
     return (
         <div className='container'>
