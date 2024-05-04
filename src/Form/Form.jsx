@@ -1,9 +1,13 @@
 import React from 'react';
 import useForm from '../useForm/Useform';
 import { useApi } from '../useApi/useApi';
+import useNavigate from '../HOC/useNavigate';
+import Swal from 'sweetalert2';
 import { useState } from 'react';
+import './form.css'
 
 const MyFormComponent = () => {
+    const { navigate } = useNavigate();
     const initialState = {
         title: '',
         sinopsis: '',
@@ -25,7 +29,15 @@ const MyFormComponent = () => {
         e.preventDefault();
         try {
             await addPost(formData); // Envía los datos del formulario usando addPost
-            setFormData(initialState); // Reinicia el estado del formulario después de enviar
+            setFormData(initialState); 
+            Swal.fire({
+                title: '¡Post Agregado!',
+                text: 'El post se ha agregado exitosamente.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                navigate('/');
+            });
         } catch (error) {
             console.error('Error al crear el post:', error);
         }
@@ -53,6 +65,7 @@ const MyFormComponent = () => {
                 <button type="submit">Agregar Post</button>
             </form>
         </div>
+        
     );
 };
 export default MyFormComponent;

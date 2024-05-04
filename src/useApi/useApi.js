@@ -31,7 +31,6 @@ export const useApi = () => {
     const fetchPost = async (postId) => {
         setLoading(true);
         try {
-            debugger;
             const responseData = await fetchPostById(postId);
             return responseData;
         } catch (error) {
@@ -69,7 +68,9 @@ export const useApi = () => {
     const updatePost = async (postId, updatedData) => {
         setLoading(true);
         try {
-            const responseData = await updatePostById(postId, updatedData);
+            //debugger;
+            const { title, sinopsis, gender } = updatedData;
+            const responseData = await updatePostById(postId, title, sinopsis, gender);
             setData(data.map(post => (post.id === postId ? responseData : post))); // Actualizar el post en la lista actual
         } catch (error) {
             setError('Error al actualizar el post. Por favor, inténtalo de nuevo más tarde.');
@@ -79,7 +80,7 @@ export const useApi = () => {
     };
 
     const userLogin = async (usuario, password) => {
-        debugger;
+        //debugger;
         setLoading(true);
         try {
             const response = await login(usuario, password);

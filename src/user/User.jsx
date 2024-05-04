@@ -1,15 +1,23 @@
 import React from 'react';
 import './user.css'; // Importa el archivo de estilos
 import useNavigate from '../HOC/useNavigate';
+import Swal from 'sweetalert2';
 
 const User = () => {
     const { navigate } = useNavigate();
   
     const handleLogout = () => {
       localStorage.clear(); // Limpia los datos de localStorage
-      navigate('/login'); // Redirige a la página de login
-      window.location.href = '/?#/login'; 
-    };
+      Swal.fire({
+          title: '¡Logout Exitoso!',
+          text: 'Te has desconectado correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+      }).then(() => {
+          navigate('/login'); // Redirige a la página de login
+          window.location.href = '/?#/login'; 
+      });
+  };
   
     return (
       <div className="user-container">

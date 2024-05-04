@@ -1,23 +1,59 @@
 .sidebar {
-    background-color: #f2f2f2;
-    padding: 1.5rem 2.5rem;
-    border: 1px solid #c4ccc4;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    a {
-        color: black;
-    }
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+    border: none;
 }
 
 .sidebar.active {
-    background-color: #e6e6e6;
+    width: 250px;
 }
 
-a {
-    color: black;
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #555;
+}
+
+.login-message {
+    color: #fff;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        width: 100px; /* Reduce el ancho del sidebar */
+    }
+    
+    .sidebar.active {
+        width: 150px; /* Reduce el ancho del sidebar activo */
+    }
+
+    .sidebar ul li a {
+        padding: 10px; /* Aumenta el espacio alrededor del texto del enlace */
+    }
+
+    .login-message {
+        padding: 10px; /* Ajusta el espacio alrededor del mensaje de inicio de sesión */
+    }
 }

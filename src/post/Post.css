@@ -1,33 +1,77 @@
+/* Estilo para la sección de publicaciones */
 .posts {
-    width: 100%;
-    margin-bottom: 10px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Mostrar las publicaciones una debajo de la otra */
+    padding: 20px;
+    width: 200%;
+    margin-left: -45%;
 }
 
-.error-message,
-.no-posts {
-    width: 100%;
+/* Estilo para los elementos de la sección de publicaciones */
+.posts > div {
+    margin-bottom: 20px; /* Espacio entre cada publicación */
+}
+
+/* Estilo para el contenido de cada publicación */
+.post-item {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
+}
+
+/* Estilo para el contenido de cada publicación al pasar el ratón sobre ella */
+.post-item:hover {
+    background-color: #e0e0e0;
+}
+
+.postdiv {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.post-link {
-    text-decoration: none;
-    color: white;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-    p {
-        color: white;
     }
-}
 
-p {
-    color: white;
-}
+    .container {
+        max-width: 800px; /* Limita el ancho máximo del contenedor */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+        padding: 20px; /* Añade relleno alrededor del contenedor */
+    }
+    
+    .post-details {
+        background-color: transparent; /* Color de fondo para el detalle del post */
+        border-radius: 8px; /* Bordes redondeados */
+        padding: 20px; /* Espaciado interno */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    }
+    
+    .post-details h1 {
+        font-size: 24px; /* Tamaño del título */
+        margin-bottom: 10px; /* Espaciado inferior */
+    }
+    
+    .post-details p {
+        font-size: 16px; /* Tamaño del texto */
+        margin-bottom: 20px; /* Espaciado inferior */
+    }
+    
+    .post-details textarea {
+        width: 100%; /* Ancho completo del textarea */
+        padding: 10px; /* Espaciado interno */
+        margin-bottom: 20px; /* Espaciado inferior */
+        border: 1px solid #ccc; /* Borde */
+        border-radius: 4px; /* Bordes redondeados */
+    }
+    
+    .post-details button {
+        background-color: #4caf50; /* Color de fondo del botón */
+        color: white; /* Color del texto */
+        border: none; /* Sin borde */
+        padding: 10px 20px; /* Espaciado interno */
+        border-radius: 4px; /* Bordes redondeados */
+        cursor: pointer; /* Cambia el cursor al pasar por encima */
+        transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+    }
+    
+    .post-details button:hover {
+        background-color: #45a049; /* Color de fondo del botón al pasar por encima */
+    }
+    

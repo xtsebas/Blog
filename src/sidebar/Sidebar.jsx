@@ -10,10 +10,10 @@ const Sidebar = () => {
     const { isLoggedIn, setIsLoggedIn } = useApi();
     console.log(isLoggedIn);
     return (
-        <aside className={'sidebar ${isHover ? "active" : ""}'}>
-        {
-            isLoggedIn ? (
+        <aside className={`sidebar ${isHover ? 'active' : ''}`}>
+            {isLoggedIn ? (
                 <ul>
+                    <li></li>
                     <li>
                         <a href="/" onClick={() => navigate('/')}>Home</a>
                     </li>
@@ -25,9 +25,11 @@ const Sidebar = () => {
                     </li>
                 </ul>
             ) : (
-                <h1>INGRESA SESION</h1>
-            )
-        }
+                <div className="login-message">
+                    <h1>INGRESA SESION</h1>
+                    {/* Aquí podrías agregar un enlace para dirigir al usuario a la página de inicio de sesión */}
+                </div>
+            )}
         </aside>
     )
 }

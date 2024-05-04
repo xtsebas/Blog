@@ -33,7 +33,7 @@ const Posts = () => {
     return (
         <section className="posts">
             {posts.map((post) => (
-                <div key={post.id} onClick={() => handleClick(post.id)}>
+                <div className='postdiv' key={post.id} onClick={() => handleClick(post.id)}>
                     <PostItem post={post} />
                 </div>
             ))}

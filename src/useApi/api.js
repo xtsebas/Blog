@@ -9,7 +9,7 @@ export const fetchPosts = async () => {
 };
 
 export const fetchPostById = async (id) => {
-    debugger;
+    //debugger;
     const response = await fetch(`${API_URL}/posts/${id}`);
     if (!response.ok) {
         throw new Error('Error al obtener el post del API');
@@ -42,6 +42,7 @@ export const deletePostById = async (id) => {
 };
 
 export const updatePostById = async (id, title, sinopsis, gender) => {
+    //debugger;
     const response = await fetch(`${API_URL}/posts/${id}`, {
         method: 'PUT',
         headers: {

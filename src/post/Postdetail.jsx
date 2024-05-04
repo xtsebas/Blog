@@ -2,28 +2,33 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useApi } from '../useApi/useApi';
 import useNavigate from '../HOC/useNavigate';
+import Swal from 'sweetalert2';
 import './Post.css'
 
 const Postdetail = () => {
     const postId = localStorage.getItem('postId');
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const { navigate } = useNavigate();
+    const { fetchPost, removePost, updatePost } = useApi();
     const [updatedPostData, setUpdatedPostData] = useState({
         title: '',
         sinopsis: '',
         gender: ''
-      });
-    const [error, setError] = useState(null);
-    const { navigate } = useNavigate();
-    const { fetchPost, removePost, updatePost } = useApi();
+    });
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                debugger;
+                //debugger;
                 const responseData = await fetchPost(postId);
                 setPost(responseData);
+                const { title, sinopsis, gender } = responseData;
+                if (title && sinopsis && gender) {
+                    setUpdatedPostData({ title, sinopsis, gender });
+                }
             } catch (error) {
                 setError('Error al obtener el post. Por favor, inténtalo de nuevo más tarde.');
             } finally {
@@ -35,9 +40,20 @@ const Postdetail = () => {
     }, [postId]);
 
     const handleDelete = async () => {
-        if (window.confirm('¿Estás seguro de que deseas eliminar este post?')) {
+        const result = await Swal.fire({
+            title: '¿Estás seguro de que deseas eliminar este post?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarlo'
+        });
+    
+        // Si el usuario confirma la eliminación
+        if (result.isConfirmed) {
             try {
                 await removePost(postId);
+                Swal.fire('Eliminado', 'El post ha sido eliminado correctamente', 'success');
                 navigate('/');
             } catch (error) {
                 setError('Error al eliminar el post. Por favor, inténtalo de nuevo más tarde.');
@@ -52,10 +68,18 @@ const Postdetail = () => {
 
     const handleUpdate = async () => {
         try {
+            debugger;
             console.log(updatedPostData);
             await updatePost(postId, updatedPostData);
             localStorage.setItem('postId', postId);
-            navigate( '/post/:id');
+            Swal.fire({
+                title: '¡Post Actualizado!',
+                text: 'El post se ha actualizado exitosamente.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                navigate('/');
+            });
         } catch (error) {
             setError('Error al actualizar el post. Por favor, inténtalo de nuevo más tarde.');
         }
@@ -74,16 +98,18 @@ const Postdetail = () => {
     }
 
     return (
-        <div className="post-details">
-            <h1>{post.title}</h1>
-            <p>{post.sinopsis}</p>
-            <p>Género: {post.gender}</p>
-            <br></br>
-            <input type="text" name="title" placeholder="Nuevo título" value={post.title} onChange={handleChange} />
-            <input type="text" name="sinopsis" placeholder="Nueva sinopsis" value={post.sinopsis} onChange={handleChange} />
-            <input type="text" name="gender" placeholder="Nuevo género" value={post.gender} onChange={handleChange} />
-            <button onClick={handleDelete}>Eliminar</button>
-            <button onClick={handleUpdate}>Actualizar</button>
+        <div className='container'>
+            <div className='post-details'>
+                <h1>{post.title}</h1>
+                <p>{post.sinopsis}</p>
+                <p>Género: {post.gender}</p>
+                <br></br>
+                <textarea type="text" name="title" placeholder="Nuevo título" onChange={handleChange}>{post.title}</textarea>
+                <textarea type="text" name="sinopsis" placeholder="Nueva sinopsis" onChange={handleChange}>{post.sinopsis}</textarea>
+                <textarea type="text" name="gender" placeholder="Nuevo género" onChange={handleChange} >{post.gender}</textarea>
+                <button onClick={handleDelete}>Eliminar</button>
+                <button onClick={handleUpdate}>Actualizar</button>
+            </div>
         </div>
     );
 };

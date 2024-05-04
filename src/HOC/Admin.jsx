@@ -51,13 +51,19 @@ const Pages = () => {
         return <div><h1>Unauthorized</h1><a href='/?#/login' onClick={() => navigate('/login')}>Please login</a></div>
     }
 
-    CurrentPage = routes[page].component
-    console.log(page);
+    if (page === '/login' || page === '/register') {
+        CurrentPage = routes[page].component;
+        return <CurrentPage />;
+    }
+
+    CurrentPage = routes[page].component;
 
     return (
         <div className='container'>
             <Sidebar />
-            <CurrentPage />
+            <div className='current'>
+                <CurrentPage />
+            </div>
         </div>
     )
 }

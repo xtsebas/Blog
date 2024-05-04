@@ -1,10 +1,12 @@
 import React, { Suspense } from "react";
 import { useApi } from "../useApi/useApi";
 import { useState } from "react";
-import LoadingScreen from "../loading/loadingScreen";
 import './login.css';
 import useToken from "./useToken";
 import useNavigate from "../HOC/useNavigate";
+import Button from "../components/Button/Button";
+import Input from "../components/Input/Input";
+
 
 const Login = () => {
     const { userLogin, loading, setIsLoggedIn } = useApi();
@@ -37,27 +39,23 @@ const Login = () => {
     };
 
     return (
-        <div className="user-container">
-            <h1>Iniciar sesión</h1>
+        <div className="login-container">
+            <h1>Iniciar Sesión</h1>
             {
                 errorMessage !== '' ? (
-                <div onClick={() => setErrorMessage('')}>
-                    {errorMessage}
-                </div>
+                    <div onClick={() => setErrorMessage('')}>
+                        {errorMessage}
+                    </div>
                 ) : null
             }
-            <form id="login-form" onSubmit={handleSubmitLogin}>
-                
-                <input type="text" id="usuario-login" placeholder="Usuario" value={usuario} required onChange={(value) => setUsuario(value.target.value)}/>
-
-                <input type="password" id="password-login" placeholder="Contraseña" value={password} required onChange={(value) => setPassword(value.target.value)}/>
-
-                <button type="submit" disabled={loading || isSubmitting}>Iniciar sesión</button>
-
+            <form onSubmit={handleSubmitLogin}>
+                <input type="text" id="usuario-login" placeholder="Usuario" value={usuario} required onChange={(value) => setUsuario(value.target.value)} className="inputClasses" />
+                <input type="password" id="password-login" placeholder="Contraseña" value={password} required onChange={(value) => setPassword(value.target.value)} className="inputClasses" />
+                <Button type="submit" disabled={loading || isSubmitting} texto="Iniciar Sesión" />
             </form>
-            <p>¿Nuevo por aquí?<a href="/?#/register" onClick={() => navigate('/register')}>Registrarse</a></p>
-
+            <p>¿Nuevo por aquí?<br/><a href="/?#/register" onClick={() => navigate('/register')} className="linkClasses">Registrarse</a></p>
         </div>
+        
     );
 };
 
