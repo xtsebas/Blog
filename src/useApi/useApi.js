@@ -8,6 +8,7 @@ export const useApi = () => {
         // Si isLoggedIn está almacenado en localStorage, convierte el valor a booleano y devuélvelo
         return storedLoggedIn ? JSON.parse(storedLoggedIn) : false;
     });
+    
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);

@@ -1,11 +1,15 @@
 import React from 'react';
-import './user.css'; // Importa el archivo de estilos
+import './user.css'; 
 import useNavigate from '../HOC/useNavigate';
+import { useApi } from '../useApi/useApi';
+import LoadingScreen from '../loading/loadingScreen';
 import Swal from 'sweetalert2';
 
 const User = () => {
     const { navigate } = useNavigate();
-  
+    const { addPost, loading, error } = useApi();
+
+
     const handleLogout = () => {
       localStorage.clear(); // Limpia los datos de localStorage
       Swal.fire({
@@ -18,12 +22,21 @@ const User = () => {
           window.location.href = '/?#/login'; 
       });
   };
+
+  if (loading) {
+    return (
+        <div className="loading-screen">
+            <LoadingScreen />
+        </div>
+    );
+}
   
     return (
-      <div className="user-container">
-        <div className="user-details">
-          <h2 className="user-name">John Doe</h2>
-          <button onClick={handleLogout}>Logout</button>
+      <div className="profile-container">
+        <div className="profile-header">
+          <h2 className="profile-name">John</h2>
+          <h2 className="profile-name">Doe</h2>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </div>
     );

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import useForm from '../useForm/Useform';
 import { useApi } from '../useApi/useApi';
 import useNavigate from '../HOC/useNavigate';
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import LoadingScreen from '../loading/loadingScreen';
 import './form.css'
 
 const MyFormComponent = () => {
@@ -13,10 +13,11 @@ const MyFormComponent = () => {
         sinopsis: '',
         gender: ''
     };
-    const { addPost, loading, error } = useApi(); // Usa el hook useApi para obtener la función addPost
-    const [formData, setFormData] = useState(initialState); // Estado para los datos del formulario
+    const { addPost, loading, error } = useApi();
+    const [formData, setFormData] = useState(initialState); 
+    const [textareaHeight, setTextareaHeight] = useState('auto'); 
+    const textareaRef = useRef(null);
 
-    // Función para manejar cambios en los campos del formulario
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -24,11 +25,10 @@ const MyFormComponent = () => {
         });
     };
 
-    // Función para manejar el envío del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await addPost(formData); // Envía los datos del formulario usando addPost
+            await addPost(formData); 
             setFormData(initialState); 
             Swal.fire({
                 title: '¡Post Agregado!',
@@ -44,27 +44,34 @@ const MyFormComponent = () => {
     };
     console.log(formData);
 
+    if (loading) {
+        return (
+            <div className="loading-screen">
+                <LoadingScreen />
+            </div>
+        );
+    }
+
     return (
-        <div>
+        <div class="form-container">
             <h2>Agregar Nuevo Post</h2>
-            {loading && <p>Cargando...</p>}
             {error && <p>Error: {error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Título:</label>
-                    <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+            <form className="form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <p for="title" id = 'title'>Titulo</p>
+                    <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required />
                 </div>
-                <div>
-                    <label>Sinopsis:</label>
-                    <textarea name="sinopsis" value={formData.sinopsis} onChange={handleChange} required />
+                <div className="form-group">
+                    <p for="sinopsis" id="sinopsis">Sinopsis</p>
+                    <textarea name="sinopsis" value={formData.sinopsis} onChange={handleChange} required style={ {height: textareaHeight}} />
                 </div>
-                <div>
-                    <label>Género:</label>
+                <div className="form-group">
+                    <p for="gender">Genero/s</p>
                     <input type="text" name="gender" value={formData.gender} onChange={handleChange} required />
                 </div>
-                <button type="submit">Agregar Post</button>
+                <button type="submit" className="form-submit-btn">Submit</button>
             </form>
-        </div>
+        </div>  
         
     );
 };

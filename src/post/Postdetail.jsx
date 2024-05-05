@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useApi } from '../useApi/useApi';
 import useNavigate from '../HOC/useNavigate';
 import Swal from 'sweetalert2';
+import LoadingScreen from '../loading/loadingScreen';
 import './Post.css'
 
 const Postdetail = () => {
@@ -86,7 +87,11 @@ const Postdetail = () => {
     };
 
     if (loading) {
-        return <div>Cargando...</div>;
+        return (
+            <div className="loading-screen">
+                <LoadingScreen />
+            </div>
+        );
     }
 
     if (error) {

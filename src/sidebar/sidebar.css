@@ -8,6 +8,7 @@
     overflow-y: auto;
     transition: width 0.3s ease;
     border: none;
+    margin-top: 5%;
 }
 
 .sidebar.active {
@@ -27,8 +28,16 @@
 .sidebar ul li a {
     color: #fff;
     text-decoration: none;
-    display: block;
+    display: flex;
+    justify-content: space-around;
     padding: 5px 10px;
+}
+
+.sidebar ul li:last-child {
+    margin-top: 150%;
+    img {
+        width: 100%;
+    }
 }
 
 .sidebar ul li a:hover {
@@ -42,7 +51,7 @@
 
 @media only screen and (max-width: 768px) {
     .sidebar {
-        width: 100px; /* Reduce el ancho del sidebar */
+        width: 50px; /* Reduce el ancho del sidebar */
     }
     
     .sidebar.active {

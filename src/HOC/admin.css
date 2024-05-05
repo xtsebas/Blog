@@ -1,11 +1,20 @@
 .container {
     display: flex;
-    justify-content: space-between; /* Alinea los elementos a los extremos */
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura de la ventana */
+    position: relative; /* Añade una posición relativa para que el footer pueda tener una posición absoluta relativa a este contenedor */
 }
 
 .current {
-    flex-grow: 1;
+    flex-grow: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
     padding: 20px;
     margin-left: 5%;
+}
+
+.footer {
+    position: absolute; /* Cambia la posición del footer a absoluta */
+    bottom: 0; /* Coloca el footer al final del contenedor */
+    width: 100%; /* Asegura que el footer ocupe todo el ancho del contenedor */
+    background-color: white;
+    padding: 10px 0; /* Agrega relleno para separar el contenido del footer del borde inferior */
 }

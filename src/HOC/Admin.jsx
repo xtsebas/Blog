@@ -3,7 +3,9 @@ import './admin.css'
 
 import useToken from '../login/useToken'
 import useNavigate from '../HOC/useNavigate'
+import Header from '../header/Header'
 import Sidebar from '../sidebar/Sidebar'
+import Footer from '../Footer/Footer'
 
 import Posts from '../post/Post'
 import MyFormComponent from '../Form/Form'
@@ -56,14 +58,19 @@ const Pages = () => {
         return <CurrentPage />;
     }
 
+
     CurrentPage = routes[page].component;
 
     return (
-        <div className='container'>
-            <Sidebar />
-            <div className='current'>
-                <CurrentPage />
+        <div>
+            <Header />
+            <div className='container'>
+                <Sidebar />
+                <div className='current'>
+                    <CurrentPage />
+                </div>
             </div>
+            <Footer className='footer' />
         </div>
     )
 }

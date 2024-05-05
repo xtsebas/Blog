@@ -59,7 +59,7 @@ const Register = () => {
                 <Button type="submit" disabled={loading || isSubmitting} texto="Registrarse" />
 
             </form>
-            {loading && <LoadingScreen />}
+            {loading && <h1>Cargando...</h1>}
         </div>
     );
 };
