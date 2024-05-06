@@ -12,7 +12,6 @@
 }
 
 .footer {
-    position: absolute; /* Cambia la posición del footer a absoluta */
     bottom: 0; /* Coloca el footer al final del contenedor */
     width: 100%; /* Asegura que el footer ocupe todo el ancho del contenedor */
     background-color: white;

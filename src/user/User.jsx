@@ -3,6 +3,8 @@ import './user.css';
 import useNavigate from '../HOC/useNavigate';
 import { useApi } from '../useApi/useApi';
 import LoadingScreen from '../loading/loadingScreen';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 
 const User = () => {
@@ -34,8 +36,8 @@ const User = () => {
     return (
       <div className="profile-container">
         <div className="profile-header">
-          <h2 className="profile-name">John</h2>
-          <h2 className="profile-name">Doe</h2>
+          <FontAwesomeIcon icon={faUser} className='imageUser' />
+          <h2 className="profile-name">John Doe</h2>
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </div>

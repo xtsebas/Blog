@@ -31,7 +31,9 @@ const PostItem = ({ post }) => {
     return (
         <div className="card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <image xlinkHref="../src/assets/img/images.jpg" width="100%" height="100%" />
+                <div className='presentation'>
+                    <h2 className="card__title" >{post.title}</h2>
+                </div>
             </svg>
 
             <div className="card__content" style={styles}>

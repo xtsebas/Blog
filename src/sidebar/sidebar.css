@@ -11,9 +11,6 @@
     margin-top: 5%;
 }
 
-.sidebar.active {
-    width: 250px;
-}
 
 .sidebar ul {
     list-style: none;
@@ -30,6 +27,7 @@
     text-decoration: none;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 5px 10px;
 }
 
@@ -45,8 +43,30 @@
 }
 
 .login-message {
-    color: #fff;
+    color: #fff; 
     padding: 20px;
+}
+
+.home-link {
+  background-color: #f0f0f0; 
+  color: #333 !important;
+  border-radius: 10px;
+}
+  
+.post-link {
+  background-color: #e6f7ff; 
+  color: black !important;
+  border-radius: 10px;
+}
+  
+.user-link {
+  background-color: #f9f9f9; 
+  color: black !important;
+  border-radius: 10px;
+}
+
+a {
+  transition: background-color 0.5s ease;
 }
 
 @media only screen and (max-width: 768px) {
@@ -65,4 +85,5 @@
     .login-message {
         padding: 10px; /* Ajusta el espacio alrededor del mensaje de inicio de sesión */
     }
+
 }
