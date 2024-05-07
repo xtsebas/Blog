@@ -1,8 +1,33 @@
-# React + Vite
+# Anime Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción:
+Anime Blog es un blog desarrollado con React que utiliza una API creada específicamente para este propósito, utilizando JavaScript y Node.js.
 
-Currently, two official plugins are available:
+## Tabla de Contenidos:
+- [Créditos](#créditos)
+- [Enlace al Blog](#enlace-al-blog)
+- [Instalación](#instalación)
+- [Ejemplos](#ejemplos)
+- [Contacto](#contacto)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Créditos:
+Este proyecto utiliza componentes de la web [uiverse.io](https://uiverse.io/Yaya12085/rude-mouse-79) para una variedad de funcionalidades.
+
+## Enlace al Blog:
+Puedes visitar el blog en el siguiente enlace: [Anime Blog](https://663a230ac8e6a51588e959a5--dynamic-cajeta-1a2081.netlify.app/#/login)
+
+## Instalación:
+1. Clona este repositorio a tu máquina local.
+2. Ejecuta `npm install` en la terminal para instalar las dependencias necesarias.
+3. Utiliza Node.js para ejecutar el proyecto.
+
+## Ejemplos:
+Con Anime Blog, puedes:
+- Subir publicaciones
+- Editar publicaciones
+- Registrarte
+- Iniciar sesión
+- Eliminar publicaciones
+
+## Contacto:
+¡Puedes seguirme en GitHub! Encuentra mi perfil [aquí](https://github.com/tu_nombre_de_usuario). Además, también puedes contactarme en LinkedIn.
