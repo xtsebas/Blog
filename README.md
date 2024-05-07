@@ -14,7 +14,7 @@ Anime Blog es un blog desarrollado con React que utiliza una API creada específ
 Este proyecto utiliza componentes de la web [uiverse.io](https://uiverse.io/Yaya12085/rude-mouse-79) para una variedad de funcionalidades.
 
 ## Enlace al Blog:
-Puedes visitar el blog en el siguiente enlace: [Anime Blog](https://663a230ac8e6a51588e959a5--dynamic-cajeta-1a2081.netlify.app/#/login)
+Puedes visitar el blog en el siguiente enlace: [Anime Blog](https://663ab7948680e97bea0bbf34--ephemeral-dieffenbachia-a772c8.netlify.app/)
 
 ## Instalación:
 1. Clona este repositorio a tu máquina local.
