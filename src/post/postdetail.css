@@ -30,6 +30,16 @@
 }
 
 .post-details button {
+    background-color: #af4c4c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+}
+.post-details button:last-child {
     background-color: #4caf50;
     color: white;
     border: none;
@@ -37,6 +47,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 20px;
 }
 
 .post-details button:hover {

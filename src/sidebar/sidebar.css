@@ -29,6 +29,8 @@
     justify-content: space-around;
     align-items: center;
     padding: 5px 10px;
+  border-radius: 10px;
+
 }
 
 .sidebar ul li:last-child {
@@ -40,6 +42,7 @@
 
 .sidebar ul li a:hover {
     background-color: #555;
+  border-radius: 10px;
 }
 
 .login-message {

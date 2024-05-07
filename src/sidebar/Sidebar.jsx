@@ -9,7 +9,7 @@ const Sidebar = () => {
     const [isHover] = useState(false);
     const { page, navigate } = useNavigate();
     const { isLoggedIn, setIsLoggedIn } = useApi();
-    const images = ['gojo', 'kazuma', 'nose', 'ryo'];
+    const images = ['gojo', 'kazuma', 'nose', 'ryo', 'dance', 'evan', 'kiki', 'prince', 'studio'];
     const [randomImage, setRandomImage] = useState('');
     const [linkBackground, setLinkBackground] = useState('home-link');
       

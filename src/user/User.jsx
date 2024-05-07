@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 const User = () => {
     const { navigate } = useNavigate();
     const { addPost, loading, error } = useApi();
+    const userName = localStorage.getItem('username');
 
 
     const handleLogout = () => {
@@ -37,7 +38,7 @@ const User = () => {
       <div className="profile-container">
         <div className="profile-header">
           <FontAwesomeIcon icon={faUser} className='imageUser' />
-          <h2 className="profile-name">John Doe</h2>
+          <h2 className="profile-name">{userName}</h2>
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </div>

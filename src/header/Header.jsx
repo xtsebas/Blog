@@ -9,7 +9,10 @@ const Header = () => {
                     <span className="tooltip-1">Create your own designs.</span>
                     <span className="tooltip-2">Mira los animes subidos por la comunidad.</span>
                     <span className="tooltip-3">Edita, borra y sube tus animes favoritos.</span>
-                    <span >ANIME BLOG</span>
+                    <span >
+                        <img src={`../src/assets/img/sidebar/gojo.gif`}></img>
+                        ANIME BLOG
+                    </span>
                 </div>
             </div>
         </header>

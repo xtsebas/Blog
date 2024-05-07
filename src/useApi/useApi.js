@@ -87,6 +87,7 @@ export const useApi = () => {
             const response = await login(usuario, password);
             setIsLoggedIn(true);
             localStorage.setItem('isLoggedIn', JSON.stringify(true));
+            localStorage.setItem('username', usuario);
             return response;
         } catch (error) {
             setError('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');

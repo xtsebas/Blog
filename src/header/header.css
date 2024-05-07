@@ -32,6 +32,13 @@
     justify-content: center;
     font-weight: 800;
     color: #372020;
+    span:last-child {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 10%;
+      }
+    }
   }
   
   .tooltip-1,
@@ -56,7 +63,7 @@
   }
   .tooltip-1 {
     top: auto;
-    left: 50%;
+    left: 25%;
     width: 200px;
   }
   .tooltip-2 {

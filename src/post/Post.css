@@ -63,6 +63,16 @@
     }
     
     .post-details button {
+        background-color: #af4c4c; /* Color de fondo del botón */
+        color: white; /* Color del texto */
+        border: none; /* Sin borde */
+        padding: 10px 20px; /* Espaciado interno */
+        border-radius: 4px; /* Bordes redondeados */
+        cursor: pointer; /* Cambia el cursor al pasar por encima */
+        transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+        margin: 10px;
+    }
+    .post-details button:last-child {
         background-color: #4caf50; /* Color de fondo del botón */
         color: white; /* Color del texto */
         border: none; /* Sin borde */
@@ -70,6 +80,7 @@
         border-radius: 4px; /* Bordes redondeados */
         cursor: pointer; /* Cambia el cursor al pasar por encima */
         transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+        margin: 10px;
     }
     
     .post-details button:hover {
