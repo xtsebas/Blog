@@ -86,4 +86,28 @@
     .post-details button:hover {
         background-color: #45a049; /* Color de fondo del botón al pasar por encima */
     }
+
+    .order-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        display: flex;
+        margin-left: 8%;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .order-button:hover {
+        background-color: #6f5252;
+    }
+    
+    .recent-button {
+        background-color: #6c6c6c;
+        color: white;
+    }
+    
+    .oldest-button {
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+    }
     

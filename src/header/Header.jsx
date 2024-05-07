@@ -11,7 +11,7 @@ const Header = () => {
                     <span className="tooltip-3">Edita, borra y sube tus animes favoritos.</span>
                     <span >
                         <img src={`../src/assets/img/sidebar/gojo.gif`}></img>
-                        ANIME BLOG
+                        <span className="logo-text">ANIME BLOG</span>
                     </span>
                 </div>
             </div>

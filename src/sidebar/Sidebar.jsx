@@ -32,23 +32,23 @@ const Sidebar = () => {
                     <li></li>
                     <li>
                         <a href="/" className={linkBackground === 'home-link' ? 'home-link' : ''} onClick={() => handleNavigation('/', 'home-link')}>
-                            <FontAwesomeIcon icon={faHome} /> 
-                            Home
+                            <FontAwesomeIcon className="icon" icon={faHome} /> 
+                            <span className="text">Home</span>
                         </a>
                     </li>
                     <li>
                         <a href="/#/post" className={linkBackground === 'post-link' ? 'post-link' : ''} onClick={() => handleNavigation('/post', 'post-link')}>
-                            <FontAwesomeIcon icon={faUpload} />
-                            Upload
+                            <FontAwesomeIcon className="icon" icon={faUpload} />
+                            <span className="text">Upload</span>
                         </a>
                     </li>
                     <li>
                         <a href="/#/user" className={linkBackground === 'user-link' ? 'user-link' : ''} onClick={() => handleNavigation('/user', 'user-link')}>
-                            <FontAwesomeIcon icon={faUser} />
-                            User
+                            <FontAwesomeIcon className="icon" icon={faUser} />
+                            <span className="text">User</span>
                         </a>
                     </li>
-                    <li>
+                    <li>    
 
                         <img src={`../src/assets/img/sidebar/${randomImage}.gif`} />
                     </li>

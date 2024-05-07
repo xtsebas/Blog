@@ -93,3 +93,10 @@ ul {
   .example-2 .icon-content a[data-social="spotify"] ~ .tooltip {
     background-color: #1db954;
   }
+
+  @media screen and (max-width: 768px) {
+    .footet2 {
+      width: 50%;
+      margin-left: 5%;
+    }
+  }

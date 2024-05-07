@@ -74,7 +74,10 @@ a {
 
 @media only screen and (max-width: 768px) {
     .sidebar {
-        width: 50px; /* Reduce el ancho del sidebar */
+        width: 60px; /* Reduce el ancho del sidebar */
+        margin-top: 10%;
+        display: flex;
+        align-content: center;
     }
     
     .sidebar.active {
@@ -87,6 +90,14 @@ a {
 
     .login-message {
         padding: 10px; /* Ajusta el espacio alrededor del mensaje de inicio de sesión */
+    }
+
+    .icon {
+      margin-right: 5px;
+    }
+
+    .text {
+      display: none;
     }
 
 }

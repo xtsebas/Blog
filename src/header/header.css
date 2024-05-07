@@ -91,3 +91,37 @@
     visibility: visible;
     pointer-events: auto;
   }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      width: 100%;
+      height: 40px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tooltip-container.show {
+        display: none; /* Ocultar tooltips en pantallas más pequeñas */
+    }
+
+    .tooltip-container {
+        display: block; /* Mostrar tooltips en pantallas más grandes */
+        margin-bottom: 10px;
+    }
+
+    .tooltip-container {
+      margin-top: 5%;
+      span:last-child {
+        display: flex;
+        font-size: 25px;
+        justify-content: center;
+        align-content: center;
+        img {
+          width: 40px;
+        }
+      }
+    }
+}

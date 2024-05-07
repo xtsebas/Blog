@@ -17,3 +17,10 @@
     background-color: white;
     padding: 10px 0; /* Agrega relleno para separar el contenido del footer del borde inferior */
 }
+
+@media screen and (max-width: 768px) {
+    .footer {
+        width: 50%;
+        margin-left: 5%;
+    }
+}

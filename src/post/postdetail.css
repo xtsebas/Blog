@@ -53,3 +53,16 @@
 .post-details button:hover {
     background-color: #45a049;
 }
+
+@media screen and (max-width: 768px) {
+    .post-details h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .post-details p {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
+}
